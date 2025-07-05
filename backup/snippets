@@ -1,7 +1,0 @@
-
-	//{ MODKEY,                       XKB_KEY_c,           spawn,          {.v = vivldcmd} },
-
-
-//static const char *vivldcmd[]        = { "vivaldi-stable", "--ozone-platform-hint=auto", NULL }; 
-
-
