@@ -1,0 +1,20 @@
+#!/bin/sh
+
+fullscreen() {
+  grim -o eDP-1 - | wl-copy
+}
+
+select() {
+  slurp | grim -g - - | wl-copy
+}
+
+while getopts "fs" flags; do
+  case "$flags" in
+    f) fullscreen
+    ;;
+    s) select
+    ;;
+    *) exit
+    ;;
+  esac
+done

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+set -e
+set -a
+
+XDG_SESSION_TYPE=wayland
+GDK_BACKEND=wayland
+QT_QPA_PLATFORM=wayland-egl
+SDL_VIDEODRIVER=wayland
+MOZ_ENABLE_WAYLAND=1
+XDG_CURRENT_DESKTOP=wlroots
+XDG_SESSION_DESKTOP=wlroots
+QT_QPA_PLATFORMTHEME=gtk3
+XCURSOR_THEME=Adwaita
+XCURSOR_SIZE=24
+CLIPHIST_MAX_ITEMS=15
+# NO_AT_BRIDGE=1
+# GNOME_ACCESSIBILITY=0
+# QT_ACCESSIBILITY=0
+
+dte(){
+  echo "$(date '+%I:%M%P')"
+}
+bat(){
+  echo "$(cat /sys/class/power_supply/BAT0/capacity)"
+}
+status_bar(){
+  while true; do
+    echo "$(bat)% $(dte)" 
+    sleep 30s 
+  done
+}
+
+status_bar | dbus-run-session dwl -s autostart.sh
+

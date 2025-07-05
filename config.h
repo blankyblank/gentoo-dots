@@ -100,12 +100,9 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[]         = { "foot", NULL };
-static const char *menucmd2[]        = { "tofi-dwl", NULL };
-static const char *menucmd[]         = { "fuzzel", NULL };
+static const char *menucmd[]         = { "tofi-dwl", NULL };
 static const char *statcmd[]         = { "foot", "-e", "top", NULL };
 static const char *term2cmd[]        = { "kitty", NULL };
-static const char *ffplaycmd[]       = { "foot", "-e", "fzffplay", NULL };
-static const char *yazvidcmd[]       = { "foot", "-e", "yazi", "/home/blank/.local/media/video-drive1/", NULL };
 static const char *clipcmd[]         = { "clipmenu", NULL };
 static const char *passcmd[]         = { "passmenu", NULL };
 static const char *qtbrowsercmd[]    = { "qutebrowser", NULL };
@@ -122,7 +119,6 @@ static const char *britedowncmd[]    = { "backlight.sh", "-d", NULL };
 static const char *scrnscmd[]        = { "screenshot", "-s", NULL };
 static const char *fscrncmd[]        = { "screenshot", "-f", NULL };
 static const char *rebootcmd[]       = { "loginctl", "reboot", NULL };
-static const char *logoutcmd[]       = { "logout.sh", NULL };
 
 /* named scratchpads - First arg only serves to match against key in rules*/
 static const char *scratchpadcmd1[] = { "a", "foot", "--title", "alsaterm", "-W", "120x34", "-e", "alsamixer", NULL };
@@ -135,11 +131,8 @@ static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	{ MODKEY,                       XKB_KEY_d,           spawn,            {.v = menucmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT,    XKB_KEY_D,           spawn,            {.v = menucmd2} },
 	{ MODKEY,                       XKB_KEY_Return,      spawn,            {.v = termcmd } },
 	{ MODKEY,                       XKB_KEY_s,           spawn,            {.v = term2cmd } },
-	{ MODKEY|WLR_MODIFIER_SHIFT,    XKB_KEY_U,           spawn,            {.v = ffplaycmd } },
-	{ MODKEY,                       XKB_KEY_u,           spawn,            {.v = yazvidcmd} },
 	{ MODKEY,                       XKB_KEY_p,           spawn,            {.v = clipcmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,    XKB_KEY_P,           spawn,            {.v = passcmd} },
 	{ MODKEY,                       XKB_KEY_w,           spawn,            {.v = qtbrowsercmd } },
@@ -206,7 +199,6 @@ static const Button buttons[] = {
 	{ ClkLtSymbol, 0,      BTN_RIGHT,  setlayout,      {.v = &layouts[2]} },
 	{ ClkTitle,    0,      BTN_MIDDLE, zoom,           {0} },
 	{ ClkStatus,   0,      BTN_MIDDLE, spawn,          {.v = statcmd} },
-	{ ClkStatus,   0,      BTN_RIGHT,  spawn,          {.v = logoutcmd} },
 	{ ClkClient,   MODKEY, BTN_LEFT,   moveresize,     {.ui = CurMove} },
 	{ ClkClient,   MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize} },
 	{ ClkTagBar,   0,      BTN_LEFT,   view,           {0} },
